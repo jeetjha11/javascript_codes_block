@@ -1,21 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
+    <button onclick={getMessage()}>Click Me
+        for Jadu</button><br>
+    <button onclick={isConfirm()}>confirm Button</button>
+    <br>
+    <button onclick={getValue()}>get value</button>
+    <br>
+    <button onclick={openGoogle()}>Open Page</button>
+    <br>
+    <button onclick={displayArray()}>View Fruits</button>
+    <br>
+    <button onclick={goToNextPage()}>Go next page >></button>
+    <br>
+    <button onclick="goToPriviousPage()">Go Privious  page <<</button>
+
+    <br>
+    <br>
+    <a href="./thi.html">go to third page</a><br><br>
+    <a href="./sec.html">go to second  page</a>
+
     <script>
-        let arr=[1,3,4,5,6,7]
 
-        
+        function getMessage() {
+            window.alert("Hii this is the alert message!!")
+        }
+        function isConfirm() {
+            var re = window.confirm("Are you sure")
+            document.write(re)
 
-        arr.forEach(function(element)
-        {
-            document.write(element)
-        })
-        
+        }
+
+        function getValue() {
+            var value = window.prompt("Please Enter the value")
+
+            document.write(value)
+        }
+        // function openGoogle() {
+        //     var value = window.open("http://127.0.0.1:5500/index.html")
+
+        //     document.write(value)
+        // }
+
+        var fruits = ["apple", "banana", "orange", "grapes", "lichi", "papaya"]
+
+        var countIndex = 0
+
+        function displayArray() {
+
+            
+            while (countIndex != fruits.length) {
+                console.log("hiii");
+                setTimeout(function () {
+                    document.writeln(`${fruits[countIndex]}`)
+                    countIndex = countIndex + 1
+
+                }, 1000)
+            }
+        }
+        function goToNextPage()
+            {
+                history.forward()
+                console.log(history.length);
+            }
+            function goToPriviousPage()
+            {
+                history.back()
+            }
     </script>
 </body>
+
 </html>
