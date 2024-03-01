@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button onclick="takeInput()">
+        Click me for take a input
+    </button>
+
+    <button onclick="findMaxValueInArray()">
+        Click me for take input for array
+    </button>
+
+
+    <script>
+
+
+
+
+        var array = [222,234234,434,1]
+
+        var max = array[0]
+        var secondMax = array[0]
+
+
+        for (let i = 0; i <= array.length; i++) {
+            if (array[i] > max) {
+                secondMax = max
+                max = array[i]
+
+
+            }
+            else if(max!=array[i] && array[i]>secondMax)
+            {
+                secondMax=array[i]
+            }
+        }
+
+        console.log("second Max",secondMax);
+        console.log("max: ",max);
+        // function findMaxValueInArray() {
+        //     var sizeOfArrray = prompt("Please Enter the size of an array")
+        //     //   5
+
+        //     var numberArray = []
+        //     for (let i = 0; i <= sizeOfArrray; i++) {
+        //         let value = prompt(`Enter the ${i} element `)
+        //         numberArray.push(value)
+        //     }
+
+        //     console.log("Array is: ", numberArray);
+
+        //     var max = numberArray[0]
+        //     for (let i = 0; i <= numberArray.length; i++) {
+        //         if (numberArray[i] > max) {
+        //             max = numberArray[i]
+        //         }
+        //     }
+
+        //     console.log("Max in the given array is: ", max);
+
+        // }
+
+
+
+
+
+
+
+
+
+
+
+        function takeInput() {
+            let age = prompt("Enter the age: ")
+            if (age >= 18) {
+                console.log("You are Eligible");
+            }
+            else {
+                console.log("You are not Elegible");
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

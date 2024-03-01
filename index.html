@@ -8,72 +8,86 @@
 </head>
 
 <body>
-    <button onclick={getMessage()}>Click Me
-        for Jadu</button><br>
-    <button onclick={isConfirm()}>confirm Button</button>
+    <h1 id="h1">
+        This is the dom page
+    </h1>
     <br>
-    <button onclick={getValue()}>get value</button>
     <br>
-    <button onclick={openGoogle()}>Open Page</button>
-    <br>
-    <button onclick={displayArray()}>View Fruits</button>
-    <br>
-    <button onclick={goToNextPage()}>Go next page >></button>
-    <br>
-    <button onclick="goToPriviousPage()">Go Privious  page <<</button>
+
+    <p id="p1">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas quo nihil voluptate cupiditate odit tenetur
+        mollitia possimus quasi debitis! Nemo commodi natus harum placeat voluptatem expedita vel, ipsam ipsum tempora.
+    </p>
 
     <br>
     <br>
-    <a href="./thi.html">go to third page</a><br><br>
-    <a href="./sec.html">go to second  page</a>
+
+    <br>
+    <br>
+    <button onclick="add_arrow()">Add Arrow</button>
+
+    <a class="a1" href="">Google</a>
+    <a class="a1" href="">Microsoft</a>
+    <a class="a1" href="">Facebook</a>
+    <a class="a1" href="">instagram</a>
+
+    <br>
+    <br>
+
+    <button onclick="addFiled()">
+        Add Filed
+    </button>
+    <button onclick="removeFiled()">
+        Remove Filed
+    </button>
+
+    <br>
+
+    <div id="dynamicDiv"></div>
+
+    
+
 
     <script>
+        // document.writeln("Hii Income Tax Officer : Narendra")
+        // document.writeln("asdasd")
+        // document.writeln("Hii Income Tax Officer : Narendra")
 
-        function getMessage() {
-            window.alert("Hii this is the alert message!!")
+        var dynamicDiv=document.getElementById("dynamicDiv")
+
+        function addFiled()
+        {
+            var newFiled='<input placeholder="New Filed">'
+            var newElement=document.createElement("input")
+            dynamicDiv.appendChild(newElement)
         }
-        function isConfirm() {
-            var re = window.confirm("Are you sure")
-            document.write(re)
-
-        }
-
-        function getValue() {
-            var value = window.prompt("Please Enter the value")
-
-            document.write(value)
-        }
-        // function openGoogle() {
-        //     var value = window.open("http://127.0.0.1:5500/index.html")
-
-        //     document.write(value)
-        // }
-
-        var fruits = ["apple", "banana", "orange", "grapes", "lichi", "papaya"]
-
-        var countIndex = 0
-
-        function displayArray() {
-
+        function removeFiled()
+        {
             
-            while (countIndex != fruits.length) {
-                console.log("hiii");
-                setTimeout(function () {
-                    document.writeln(`${fruits[countIndex]}`)
-                    countIndex = countIndex + 1
-
-                }, 1000)
-            }
         }
-        function goToNextPage()
-            {
-                history.forward()
-                console.log(history.length);
-            }
-            function goToPriviousPage()
-            {
-                history.back()
-            }
+
+
+
+
+
+        function add_arrow()
+        {
+            var length=document.getElementsByClassName("a1").length
+        var classElement=document.getElementsByClassName("a1")
+        for(let i=0; i<=4;i++)
+        {
+            let innerValue=classElement[i].innerHTML
+            classElement[i].innerHTML=innerValue+">>>"
+
+        }
+        }
+
+        var p1=document.getElementById("p1").textContent
+        document.getElementById("h1").innerHTML="This is updated page"
+
+        document.getElementById("h1").style.background='red'
+
+       
+        // alert(p1)
     </script>
 </body>
 

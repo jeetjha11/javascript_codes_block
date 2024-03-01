@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="main">
+        <button id="add" onclick="add()"
+            style=" font-size: larger; font-weight: bolder; padding: 10px; background-color: aliceblue; border: 2px solid green; width: 200px; color: gray; ">
+            Add
+        </button>&nbsp;&nbsp;
+        <button id="substract" onclick="sub()"
+            style="font-size: larger; font-weight: bolder; padding: 10px; background-color: aliceblue; border: 2px solid green; width: 200px; color: gray;">
+            Substract
+        </button>&nbsp;&nbsp;
+        <button id="multiply" onclick="mul()"
+            style="font-size: larger; font-weight: bolder; padding: 10px; background-color: aliceblue; border: 2px solid green; width: 200px; color: gray;">
+            Multiply
+        </button>&nbsp;&nbsp;
+        <button  id="devide" onclick="div()"
+            style="font-size: larger; font-weight: bolder; padding: 10px; background-color: aliceblue; border: 2px solid green; width: 200px; color: gray;">
+            devide
+        </button>&nbsp;&nbsp;
+
+        <div id="result"
+            style=" font-size: larger; font-weight: bolder; margin: 0 auto; margin-top: 40px;margin-left: 400px;">
+            RESULT:  <span id="data" style=" font-size: larger; font-weight: bolder;"></span>
+        </div>
+    </div>
+
+
+
+    <script>
+
+        var data=document.getElementById('data')
+        function add()
+        {
+            let number1=prompt("Enter the first number")
+            number1=parseInt(number1)
+            let number2=prompt("Enter the second number")
+            number2=parseInt(number2)
+            let result=number1+number2
+            data.textContent=result
+        }
+        function sub()
+        {
+
+            let number1=prompt("Enter the first number")
+            number1=parseInt(number1)
+            let number2=prompt("Enter the second number")
+            number2=parseInt(number2)
+            let result=number1-number2
+            data.textContent=result
+        }
+        function mul()
+        {
+
+            let number1=prompt("Enter the first number")
+            number1=parseInt(number1)
+            let number2=prompt("Enter the second number")
+            number2=parseInt(number2)
+            let result=number1*number2
+            data.textContent=result
+        }
+        function div()
+        {
+            let number1=prompt("Enter the first number")
+            number1=parseInt(number1)
+            let number2=prompt("Enter the second number")
+            number2=parseInt(number2)
+            let result=number1/number2
+            data.textContent=result
+
+        }
+
+    </script>
+</body>
+
+</html>

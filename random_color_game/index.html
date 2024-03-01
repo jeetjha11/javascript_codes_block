@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="index.js"></script>
+
+    <style>
+        body {
+            overflow: hidden;
+        }
+
+        .blur-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(5px);
+            /* Adjust the blur amount as needed */
+            z-index: 1;
+        }
+
+        .mesage {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            /* Adjust background color as needed */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            /* Add shadow for better visibility */
+            z-index: 2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="blur_background"></div>
+
+    <div id="message">
+
+    </div>
+
+    <h1
+        style="margin-bottom: 30px; color: white; background-color: rgb(158, 158, 135);width: fit-content; text-align: center; padding: 10px;border-radius: 5px; margin: 0 auto;">
+        Welcome to the Color game</h1>
+
+    <div style="margin-top: 100px; display: flex; justify-content: center; gap: 100px;" class="user">
+
+        <div style="border-radius: 5px; font-weight: bolder; text-align: center; height: 300px ;width: 300px;"
+            id="userColorDiv"> USER</div>
+
+        <div style=" border-radius: 5px; font-weight: bolder; text-align: center;  height: 300px ;width: 300px;"
+            id="systemColorDiv"> System</div>
+
+    </div>
+
+    <div style="margin-top: 100px; display: flex; justify-content: center; gap: 300px;">
+        <button onclick="userInput()"
+            style="background-color: green; font-weight: bolder;padding: 10px; color: white;border-radius: 5px;width: 90px;">Enter
+            the Color</button>
+        <button  id="startButton"
+            style="background-color: green; font-weight: bolder;padding: 10px; color: white;border-radius: 5px;width: 90px;">Start</button>
+
+
+        <div
+            style="background-color: rgb(135, 171, 135); font-weight: bolder;padding: 16px; color: white;border-radius: 5px;width: 200px;">
+            Attempt Left: &nbsp; &nbsp; &nbsp;<span style="font-size: large; font-weight: bolder;" id="counter"></span>
+        </div>
+    </div>
+
+
+    <script>
+        var userColorDivElement = document.getElementById('userColorDiv')
+        var systemColorDivElement = document.getElementById('systemColorDiv')
+
+        var attempts = 5
+        var counterElement = document.getElementById('counter')
+
+        counterElement.textContent = attempts
+        const colorArray = [
+            "AliceBlue",
+            "AntiqueWhite",
+            "Aqua",
+            "Aquamarine",
+            "Azure",
+            "Beige",
+            "Bisque",
+            "Black",
+            "BlanchedAlmond",
+            "Blue",
+            "BlueViolet",
+            "Brown",
+            "BurlyWood",
+            "CadetBlue",
+            "Chartreuse",
+            "Chocolate",
+            "Coral",
+            "CornflowerBlue",
+            "Cornsilk",
+            "Crimson",
+            "Cyan",
+            "DarkBlue",
+            "DarkCyan",
+            "DarkGoldenRod",
+            "DarkGray",
+            "DarkGreen",
+            "DarkKhaki",
+            "DarkMagenta",
+            "DarkOliveGreen",
+            "DarkOrange",
+            "DarkOrchid",
+            "DarkRed",
+            "DarkSalmon",
+            "DarkSeaGreen",
+            "DarkSlateBlue",
+            "DarkSlateGray",
+            "DarkTurquoise",
+            "DarkViolet",
+            "DeepPink",
+            "DeepSkyBlue",
+            "DimGray",
+            "DodgerBlue",
+            "FireBrick",
+            "FloralWhite",
+            "ForestGreen",
+            "Fuchsia",
+            "Gainsboro",
+            "GhostWhite",
+            "Gold",
+            "GoldenRod",
+            "Gray",
+            "Green",
+            "GreenYellow",
+            "HoneyDew",
+            "HotPink",
+            "IndianRed",
+            "Indigo",
+            "Ivory",
+            "Khaki",
+            "Lavender",
+            "LavenderBlush",
+            "LawnGreen",
+            "LemonChiffon",
+            "LightBlue",
+            "LightCoral",
+            "LightCyan",
+            "LightGoldenRodYellow",
+            "LightGray",
+            "LightGreen",
+            "LightPink",
+            "LightSalmon",
+            "LightSeaGreen",
+            "LightSkyBlue",
+            "LightSlateGray",
+            "LightSteelBlue",
+            "LightYellow",
+            "Lime",
+            "LimeGreen",
+            "Linen",
+            "Magenta",
+            "Maroon",
+            "MediumAquaMarine",
+            "MediumBlue",
+            "MediumOrchid",
+            "MediumPurple",
+            "MediumSeaGreen",
+            "MediumSlateBlue",
+            "MediumSpringGreen",
+            "MediumTurquoise",
+            "MediumVioletRed",
+            "MidnightBlue",
+            "MintCream",
+            "MistyRose",
+            "Moccasin",
+            "NavajoWhite",
+            "Navy",
+            "OldLace",
+            "Olive",
+            "OliveDrab",
+            "Orange",
+            "OrangeRed",
+            "Orchid",
+            "PaleGoldenRod",
+            "PaleGreen",
+            "PaleTurquoise",
+            "PaleVioletRed",
+            "PapayaWhip",
+            "PeachPuff",
+            "Peru",
+            "Pink",
+            "Plum",
+            "PowderBlue",
+            "Purple",
+            "RebeccaPurple",
+            "Red",
+            "RosyBrown",
+            "RoyalBlue",
+            "SaddleBrown",
+            "Salmon",
+            "SandyBrown",
+            "SeaGreen",
+            "SeaShell",
+            "Sienna",
+            "Silver",
+            "SkyBlue",
+            "SlateBlue",
+            "SlateGray",
+            "Snow",
+            "SpringGreen",
+            "SteelBlue",
+            "Tan",
+            "Teal",
+            "Thistle",
+            "Tomato",
+            "Turquoise",
+            "Violet",
+            "Wheat",
+            "White",
+            "WhiteSmoke",
+            "Yellow",
+            "YellowGreen"
+        ];
+
+        var userInputColor = ''
+        function userInput() {
+            userInputColor = prompt("Enter the valid color.")
+            userColorDivElement.style.background = userInputColor
+        }
+
+
+        var arr = [1, 2, 3, 4]
+        arr.length
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        function renderSystemColor() {
+
+
+            let randomIndex = getRandomInt(0, colorArray.length - 1)
+            let randomColor = colorArray[randomIndex]
+            systemColorDivElement.style.background = randomColor
+
+            //  amtching the color
+
+            //  setTimeOut(()=>{
+
+            // }, time)
+
+            var butElement=document.getElementById('startButton')
+            
+
+
+
+
+
+
+            userInputColor = userInputColor.toLowerCase()
+            randomColor = randomColor.toLowerCase()
+            setTimeout(function () {
+                //  code
+                if (randomColor == userInputColor) {
+                    alert("You won the game. Color Matched success")
+                }
+                else {
+                    alert("Please Try Again.")
+                }
+
+            }, 300);
+            attempts = attempts - 1
+            counterElement.style.textContent = attempts
+
+            if (attempts == 0) {
+                alert("All Atampts Completed... Please restart the game")
+            }
+
+
+        }
+
+    </script>
+</body>
+
+</html>

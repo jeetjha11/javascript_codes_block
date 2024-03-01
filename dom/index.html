@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body id="main">
+
+    <button style="border-radius: 5px; padding: 5px; background-color: black; color: white;" id="btn1" onclick="changeToBlack()">Black</button>
+    <button style="border-radius: 5px; padding: 5px; background-color: blue; color: white;" id="btn2" onclick="changeToBlue()">Blue</button>
+    <button style="border-radius: 5px; padding: 5px; background-color: red; color: white;" id="btn3" onclick="changeToRed()">Red</button>
+    <button style="border-radius: 5px; padding: 5px; background-color: green; color: white;" id="btn4" onclick="changeToGreen()">Green</button>
+    <button style="border-radius: 5px; padding: 5px; background-color: yellow; color: white;" id="btn5" onclick="changeToYellow()">Yellow</button>
+
+
+    <button onclick="return decrease()">click to decrease</button>
+    <p  id="abc"></p>
+
+    
+
+    <!--  take  a input as a color from the user and then render it on the body -->
+
+
+
+    <button style="border-radius: 5px; padding: 5px;" id="btn5" onclick="customColor()">Custom Color</button>
+    
+
+
+
+
+    <script>
+
+        var para=document.getElementById('abc')
+        var value=5
+        function  decrease()
+        {
+            if(value>0)
+            {
+                para.textContent=value
+            value=value-1
+            para.textContent=value
+            }
+            else{
+                alert("Number cant decrese")
+            }
+
+            
+        }
+
+        var targetTargetElement = document.getElementById('main')
+
+        function changeToBlack()
+        {
+
+            targetTargetElement.style.background='black'
+
+
+        }
+        function changeToBlue()
+        {
+
+            targetTargetElement.style.background='blue'
+        }
+        function changeToRed()
+        {
+
+            targetTargetElement.style.background='red'
+        }
+
+        function changeToGreen()
+        {
+
+            targetTargetElement.style.background='green'
+        }
+
+        function changeToYellow()
+        {
+
+            targetTargetElement.style.background='yellow'
+        }
+
+
+        function customColor()
+        {
+            var inputValue=prompt("Please Enter the color: ")
+            targetTargetElement.style.background=inputValue
+        }
+       
+
+    </script>
+
+</body>
+
+</html>

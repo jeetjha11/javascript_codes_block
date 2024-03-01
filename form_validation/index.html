@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>User Form</h3>
+    <div class="mainContainer" style="border: 1px solid black; width: fit-content; padding: 30px; background-color: aqua; border-radius: 5px; box-shadow: 2px lemonchiffon;">
+        <form name="user_form" action="#" onsubmit="return validate_form()">
+
+            <input name="user_name" placeholder="User Name"><br>
+            <span id="user_name_error"></span><br>
+            <input type="email" name="user_email" placeholder="User Email">
+            <span id="user_email_error"></span><br><br>
+            <input name="user_password" placeholder="User user_password">
+            <span id="user_password_error"></span><br><br>
+            <input name="user_confirm_password" placeholder="User Confirm Password">
+            <span id="user_confirm_password_error"></span><br><br>
+
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+        </form>
+    </div>
+
+
+    <script>
+        
+
+        function validate_user_name_filed()
+        {
+            var user_name=document.user_form.user_name.value
+            var error=document.getElementById('user_name_error')
+            if(user_name.length==null || user_name=='' || user_name=== null)
+            {
+                error.textContent='This Filed is Requried'
+                error.style.color='red'
+                return false
+            }
+            else if(!isNaN(user_name))
+            {
+                error.textContent='Numeric Value is Not Accepeted'
+                error.style.color='red'
+                return false
+            }
+            else{
+                error.textContent=''
+                return true
+            }
+        }
+        function validate_form() {
+            
+            if(validate_user_name_filed())
+            {
+                return true
+            }
+            return false
+        }
+
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>

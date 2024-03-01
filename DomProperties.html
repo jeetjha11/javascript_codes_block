@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="container">
+
+    </div><br><br>
+    <div id="Inputcontainer">
+
+    </div>
+
+
+
+    <script>
+        var container = document.getElementById('container')
+        var heading = document.createElement('h1')
+        var br = document.createElement('br')
+        heading.textContent = "This is the Form::"
+        container.append(heading)
+        container.append(br)
+
+        var removeButton = document.createElement('button')
+        var addButton = document.createElement('button')
+        removeButton.innerText = "Remove Input Filed"
+        addButton.innerText = "Add Input Filed"
+        container.append(removeButton)
+        container.append(addButton)
+
+
+        var Inputcontainer = document.getElementById('Inputcontainer')
+
+        var inputElement = document.createElement('input')
+
+        addButton.addEventListener('click', add_filed)
+
+        function add_filed(event) {
+            Inputcontainer.appendChild(inputElement)
+
+        }
+
+        
+
+
+
+
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>
